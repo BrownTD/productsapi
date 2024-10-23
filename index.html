@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1></h1>
+    <div class="calendar">
+        <header>
+            <h3><h3>
+                <nav>
+                    <button id="prev"></button>
+                    <button id="next"></button>
+                </nav>
+        </header>
+        <section>
+          <ul class="days">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+          </ul>
+          <ul class="dates"></ul>
+        </section>
+    </div>
+    <script src="script.js" defer></script>
+    
+    <div id="calendar-popup" class="calendar-popup">
+      <div class="popup-content">
+        <button id="close-popup"><strong>X</strong></button>
+        <h2><p id="booking-date">Select a date</p></h2>
+        <form>
+          <label for="start-time">Start Time:</label>
+          <select id="start-time" name="start-time" required onchange="updateEndTime()">
+            <option value="10:00">10:00 AM</option>
+            <option value="10:30">10:30 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="11:30">11:30 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="12:30">12:30 PM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="13:30">01:30 PM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="14:30">02:30 PM</option>
+            <option value="15:00">03:00 PM</option>
+            <option value="15:30">03:30 PM</option>
+            <option value="16:00">04:00 PM</option>
+            <option value="16:30">04:30 PM</option>
+            <option value="17:00">05:00 PM</option>
+            <option value="17:30">05:30 PM</option>
+            <option value="18:00">06:00 PM</option>
+            <option value="18:30">06:30 PM</option>
+            <option value="19:00">07:00 PM</option>
+            <option value="19:30">07:30 PM</option>
+            <option value="20:00">08:00 PM</option>
+          </select>
+          <br>
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" name="end-time" value="12:00" readonly required>
+          <br>
+          <br>
+          <label for="guests">Number of Guests:</label>
+          <input type="number" id="guests" name="guests" min="10" max="100" required>
+          <br>
+          <label for="canvas-size">Canvas Size:</label>
+          <br>
+          <input type="radio" id="11x17" name="canvas-size" value="11x17" required>
+          <label for="11x17">11x14</label>
+          <br>
+          <input type="radio" id="16x20" name="canvas-size" value="16x20" required>
+          <label for="16x20">16x20</label>
+          <br>
+          <button type="button">Choose Painting</button>
+        </form>
+      </div>
+    </div>
+    <div id="error-message" class="error"></div>
+
+    <div id="products-container" style="display: none; margin-top: 20px;">
+      <h2>Available Paintings</h2>
+      <div id="products-list"></div>
+    </div>
+
+    <script src="script.js" defer></script>
+      

@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2rem;
+    height: 100vh;
+    font-family: 'Montserrat', Sans-Serif;
+    background: linear-gradient(to bottom, #e2e2e2, #825fc2);
+    transition: transform 0.5s ease-in-out; /* Transition for body shift */
+}
+
+body.open {
+    transform: translateY(-500px); /* Shift body up when popup is open */
+}
+
+h1 {
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+h3 { 
+    font-weight: 500;
+}
+
+.calendar {
+    margin: auto;
+    width: 380px;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.calendar header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.calendar ul li {
+    width: calc(100% / 7);
+    margin-top: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+#prev,
+#next {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#prev::before, #next::before {
+    content: '';
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    border-color: #ccc;
+}
+
+#next::before {
+    transform: rotate(45deg);
+}
+
+#prev::before {
+    transform: rotate(-135deg);
+}
+
+#prev:hover::before, 
+#next:hover::before {
+    border-color: #333;
+}
+
+.days {
+    font-weight: 500;
+}
+
+.dates li.today {
+    color: #fff;
+}
+
+.dates li.today::before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: #000000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.dates li.inactive {
+    color: #ccc;
+}
+
+/* Styles for popup with animation */
+.calendar-popup {
+    display: flex; /* Change to flex to center the popup */
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+body.open .calendar-popup {
+    opacity: 1; /* Fade in */
+    visibility: visible; /* Make visible */
+    
+    
+}
+
+.popup-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    max-width: 100%;
+    transform: translateY(-500px); /* Start above */
+    transition: transform 0.5s ease-in-out; /* Slide down effect */
+    
+}
+
+body.open .popup-content {
+    transform: translateY(0); /* Slide down into view */
+}
+
+.popup-content h2 {
+    margin-bottom: 1rem;
+    margin-top: 0px;
+    position: relative;
+}
+
+.popup-content label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+/* General styles for popup content */
+.popup-content {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Adjust width as needed */
+    margin: auto;
+}
+
+/* Styles for select inputs */
+.popup-content select{
+    background-color: #eee;
+    width: 25%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    font-family: 'Montserrat', Sans-Serif;
+}
+.popup-content input[type="time"][readonly] {
+    background-color: #eee;
+    width: 25%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    font-family: 'Montserrat', Sans-Serif;
+}
+
+/* Styles for number inputs */
+.popup-content input[type="number"] {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+/* Styles for radio buttons */
+.popup-content input[type="radio"] {
+    width: auto;
+    margin-right: 0.5rem;
+    background-color: #eee;
+}
+
+/* Styles for radio labels to align with radio buttons */
+.popup-content label {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+/* Styles for buttons */
+.popup-content button{
+    background-color: #825fc2;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    padding: 10px 25px;
+}
+
+/* Hover effect for buttons */
+.popup-content button:hover {
+    background: #333; /* Darker shade for hover effect */
+}
+
+#close-popup {
+    position: relative;
+    color: #000;
+    top: -30px;
+    right: -335px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    position: relative;
+    top: 0%;
+    text-align: center;
+}
+
