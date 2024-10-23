@@ -183,7 +183,7 @@ body.open .popup-content {
 /* Styles for select inputs */
 .popup-content select{
     background-color: #eee;
-    width: 25%;
+    width: 48%;
     padding: 0.5rem;
     border: none;
     border-radius: 4px;
@@ -194,7 +194,7 @@ body.open .popup-content {
 }
 .popup-content input[type="time"][readonly] {
     background-color: #eee;
-    width: 30%;
+    width: 50%;
     padding: 0.5rem;
     border: none;
     border-radius: 4px;
