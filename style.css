@@ -31,7 +31,8 @@ h3 {
 
 .calendar {
     margin: auto;
-    width: 380px;
+    width: 90%; /* Responsive width */
+    max-width: 380px; /* Max width for larger screens */
     padding: 1rem;
     background: #fff;
     border-radius: 10px;
@@ -52,7 +53,7 @@ h3 {
 }
 
 .calendar ul li {
-    width: calc(100% / 7);
+    width: calc(100% / 7); /* Each day of the week */
     margin-top: 25px;
     position: relative;
     z-index: 2;
@@ -60,8 +61,10 @@ h3 {
 
 #prev,
 #next {
-    width: 20px;
-    height: 20px;
+    width: 5vw; /* Responsive width */
+    height: 5vw; /* Responsive height */
+    max-width: 20px; /* Max width for larger screens */
+    max-height: 20px; /* Max height for larger screens */
     position: relative;
     border: none;
     background: transparent;
@@ -121,11 +124,11 @@ h3 {
 /* Styles for popup with animation */
 .calendar-popup {
     display: flex; /* Change to flex to center the popup */
-    position: relative;
-    top: 0;
+    position: fixed; /* Use fixed for better responsiveness */
+    top: 20;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
     background: transparent;
     justify-content: center;
     align-items: center;
@@ -138,8 +141,6 @@ h3 {
 body.open .calendar-popup {
     opacity: 1; /* Fade in */
     visibility: visible; /* Make visible */
-    
-    
 }
 
 .popup-content {
@@ -147,11 +148,10 @@ body.open .calendar-popup {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 600px;
-    max-width: 100%;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width for larger screens */
     transform: translateY(-500px); /* Start above */
     transition: transform 0.5s ease-in-out; /* Slide down effect */
-    
 }
 
 body.open .popup-content {
@@ -175,16 +175,16 @@ body.open .popup-content {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 100%; /* Full width */
     max-width: 400px; /* Adjust width as needed */
     margin: auto;
 }
 
 /* Styles for select inputs */
-.popup-content select{
+.popup-content select {
     background-color: #eee;
-    width: 48%;
-    padding: 0.5rem;
+    width: 100%; /* Full width */
+    padding: 0.3rem;
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
@@ -192,10 +192,11 @@ body.open .popup-content {
     font-size: 13px;
     font-family: 'Montserrat', Sans-Serif;
 }
+
 .popup-content input[type="time"][readonly] {
     background-color: #eee;
-    width: 50%;
-    padding: 0.5rem;
+    width: 100%; /* Full width */
+    padding: 0.3rem;
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
@@ -212,7 +213,7 @@ body.open .popup-content {
     padding: 10px 15px;
     font-size: 13px;
     border-radius: 8px;
-    width: 50%;
+    width: 100%; /* Full width */
     outline: none;
 }
 
@@ -231,7 +232,7 @@ body.open .popup-content {
 }
 
 /* Styles for buttons */
-.popup-content button{
+.popup-content button {
     background-color: #825fc2;
     border: 1px solid transparent;
     border-radius: 8px;
@@ -268,5 +269,36 @@ body.open .popup-content {
     position: relative;
     top: 0%;
     text-align: center;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem; /* Less padding on smaller screens */
+    }
+
+    .calendar {
+        width: 95%; /* Wider on smaller screens */
+        max-width: none; /* Remove max width */
+    }
+
+    .popup-content {
+        width: 95%; /* Full width for popup */
+        max-width: none; /* Remove max width */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+
+    h3 {
+        font-size: 1rem; /* Adjust subheading size for smaller screens */
+    }
+
+    #close-popup {
+        right: -10px; /* Adjust close button position */
+    }
 }
 
